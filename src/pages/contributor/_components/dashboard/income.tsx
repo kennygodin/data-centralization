@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { columns, Entries } from "./recent-entries-column";
-import { DataTable } from "./recent-entries-data-table";
+import { columns, Entries } from "./income-column";
+import { IncomeDataTable } from "./income-table";
 
-export const RecentEntries = () => {
+export const Income = () => {
   const [data, setData] = useState<Entries[]>([]);
 
   useEffect(() => {
@@ -11,25 +11,25 @@ export const RecentEntries = () => {
         {
           id: "728ed52f",
           weekEnding: "2025-05-03",
-          submittedBy: "John Doe",
+          enteredBy: "John Doe",
           amount: 100,
-          submittedOn: "2025-05-04",
+          enteredOn: "2025-05-04",
           lastEditedOn: "2025-05-05",
         },
         {
           id: "728ed512f",
           weekEnding: "2025-04-26",
-          submittedBy: "Jane Smith",
+          enteredBy: "Jane Smith",
           amount: 200,
-          submittedOn: "2025-04-27",
+          enteredOn: "2025-04-27",
           lastEditedOn: "2025-04-28",
         },
         {
           id: "728ed5221f",
           weekEnding: "2025-04-19",
-          submittedBy: "Alice Johnson",
+          enteredBy: "Alice Johnson",
           amount: 300,
-          submittedOn: "2025-04-20",
+          enteredOn: "2025-04-20",
           lastEditedOn: "2025-04-21",
         },
       ];
@@ -45,7 +45,7 @@ export const RecentEntries = () => {
         <h3 className="text-lg text-slate-950 mb-4 font-medium">
           Recent Income
         </h3>
-        <DataTable columns={columns} data={data} />
+        <IncomeDataTable columns={columns} data={data} />
       </div>
     </div>
   );

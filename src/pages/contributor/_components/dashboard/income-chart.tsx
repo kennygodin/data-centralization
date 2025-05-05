@@ -37,7 +37,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export const RecentEntriesChart = () => {
+export const IncomeChart = () => {
   const defaultPeriod = {
     label: "January - June",
     range: {

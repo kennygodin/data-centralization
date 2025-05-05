@@ -1,5 +1,5 @@
-import { CardData, DashboardCard } from "./_components/card";
-import { SelectDate } from "./_components/select-date";
+import { CardData, DashboardCard } from "./_components/view-card";
+import { SelectDate } from "./_components/dashboard/select-date";
 import { useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-day-picker";
@@ -9,8 +9,8 @@ import {
   DollarSign,
   UserRoundPlus,
 } from "lucide-react";
-import { RecentEntries } from "./_components/recent-entries";
-import { RecentEntriesChart } from "./_components/recent-entries-chart";
+import { Income } from "./_components/dashboard/income";
+import { IncomeChart } from "./_components/dashboard/income-chart";
 
 export const ContributorDashboard = () => {
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
@@ -68,8 +68,8 @@ export const ContributorDashboard = () => {
       </div>
       <DashboardCard data={cardData} />
       <div className="grid grid-cols-3 space-x-3">
-        <RecentEntries />
-        <RecentEntriesChart />
+        <Income />
+        <IncomeChart />
       </div>
     </div>
   );

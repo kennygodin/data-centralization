@@ -4,9 +4,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ArrowDown, CalendarIcon, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { startOfWeek, endOfWeek, subWeeks, format } from "date-fns";
+import { startOfWeek, endOfWeek, subWeeks } from "date-fns";
 import { DateRange } from "react-day-picker";
 
 interface SelectDateProps {

@@ -6,9 +6,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 export type Entries = {
   id: string;
   weekEnding: string;
-  submittedBy: string;
+  enteredBy: string;
   amount: number;
-  submittedOn: string;
+  enteredOn: string;
   lastEditedOn: string;
 };
 
@@ -44,14 +44,14 @@ export const columns: ColumnDef<Entries>[] = [
     header: "Week Ending",
   },
   {
-    accessorKey: "submittedBy",
+    accessorKey: "enteredBy",
     header: ({ column }) => (
       <Button
         variant="ghost"
         className="text-xs"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
       >
-        Submitted By
+        Entered By
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     ),
@@ -65,8 +65,8 @@ export const columns: ColumnDef<Entries>[] = [
     },
   },
   {
-    accessorKey: "submittedOn",
-    header: "Submitted On",
+    accessorKey: "enteredOn",
+    header: "Entered On",
   },
   {
     accessorKey: "lastEditedOn",
@@ -76,13 +76,13 @@ export const columns: ColumnDef<Entries>[] = [
     id: "actions",
     header: "Actions",
     cell: ({ row }) => {
-      const payment = row.original;
+      const actions = row.original;
       return (
         <Button
           variant="outline"
           size="sm"
           className="text-xs"
-          onClick={() => console.log("Edit", payment.id)}
+          onClick={() => console.log("Edit", actions.id)}
         >
           View
         </Button>

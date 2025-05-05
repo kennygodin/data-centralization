@@ -6,7 +6,7 @@ import {
   SortingState,
   getSortedRowModel,
   getFilteredRowModel,
-  // ColumnFiltersState,
+  ColumnFiltersState,
 } from "@tanstack/react-table";
 
 import {
@@ -17,20 +17,27 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  searchValue?: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  searchValue = "",
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
-  // const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [rowSelection, setRowSelection] = useState({});
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [globalFilter, setGlobalFilter] = useState("");
+
+  useEffect(() => {
+    setGlobalFilter(searchValue);
+  }, [searchValue]);
 
   const table = useReactTable({
     data,
@@ -38,12 +45,14 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
-    // onColumnFiltersChange: setColumnFilters,
+    onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onGlobalFilterChange: setGlobalFilter,
     onRowSelectionChange: setRowSelection,
     state: {
       sorting,
-      // columnFilters,
+      columnFilters,
+      globalFilter,
       rowSelection,
     },
   });
@@ -95,7 +104,7 @@ export function DataTable<TData, TValue>({
                 colSpan={columns.length}
                 className="h-24 text-center border-0"
               >
-                No results.
+                {searchValue ? "No matching results found" : "No results found"}
               </TableCell>
             </TableRow>
           )}
