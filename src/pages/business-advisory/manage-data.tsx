@@ -1,28 +1,10 @@
 import { Receipt, UserRoundPlus, CircleFadingPlus, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { ManageDataAddButton } from "./_components/manage-data/manage-data-add-btn";
 import { SortRecords } from "./_components/manage-data/sort-records";
 import { TabButtons } from "./_components/manage-data/tab-buttons";
 import { ManageRecordsTable } from "./_components/manage-data/manage-record-table";
 import { useState } from "react";
-
-const manageActions = [
-  {
-    label: "Add new income",
-    icon: <Receipt size={15} color="#fff" />,
-    iconBg: "bg-[#2CAA5D]",
-  },
-  {
-    label: "Add new client",
-    icon: <UserRoundPlus size={15} color="#fff" />,
-    iconBg: "bg-[#2C3DAA]",
-  },
-  {
-    label: "Add new prospect",
-    icon: <CircleFadingPlus size={15} color="#fff" />,
-    iconBg: "bg-[#2CA6AA]",
-  },
-];
+import { AddDataModal } from "./_components/manage-data/AddDataModal";
 
 export const ContributorManageData = () => {
   const [activeTab, setActiveTab] = useState("income");
@@ -39,14 +21,24 @@ export const ContributorManageData = () => {
       <div className="flex flex-col w-max">
         <h1 className="text-2xl text-slate-950 mb-4">Manage Data</h1>
         <div className="flex items-center space-x-2 mb-4">
-          {manageActions.map((action, index) => (
-            <ManageDataAddButton
-              key={index}
-              label={action.label}
-              icon={action.icon}
-              iconBg={action.iconBg}
-            />
-          ))}
+          <AddDataModal
+            type="income"
+            icon={<Receipt size={15} />}
+            iconBg="bg-[#2CAA5D]"
+            label="Add new income"
+          />
+          <AddDataModal
+            type="client"
+            icon={<UserRoundPlus size={15} />}
+            iconBg="bg-[#2C3DAA]"
+            label="Add new client"
+          />
+          <AddDataModal
+            type="prospect"
+            icon={<CircleFadingPlus size={15} />}
+            iconBg="bg-[#2CA6AA]"
+            label="Add new prospect"
+          />
         </div>
       </div>
       <h1 className="text-2xl text-slate-950 mb-4">Records</h1>

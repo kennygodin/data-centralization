@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import { ContributorSidebar } from "../sidebars/contributor";
+import { BusinessAdvisorySidebar } from "../sidebars/contributor";
 import { SidebarProvider } from "../ui/sidebar";
 import { Navbar } from "../navbar";
 
-export const ContributorLayout = () => {
+export const BusinessAdvisoryLayout = () => {
   return (
     <SidebarProvider>
-      <ContributorSidebar />
+      <BusinessAdvisorySidebar />
       <main className="w-full">
         <Navbar />
         <Outlet />

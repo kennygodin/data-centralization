@@ -1,4 +1,4 @@
-import { CardData, DashboardCard } from "./_components/view-card";
+import { CardData, DashboardCard } from "./_components/dashboard/view-card";
 import { SelectDate } from "./_components/dashboard/select-date";
 import { useState } from "react";
 import { format } from "date-fns";

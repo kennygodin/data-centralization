@@ -1,11 +1,11 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import { SigninPage } from "./pages/sign-in/page";
-import { ContributorLayout } from "./components/layouts/contributor";
-import { ContributorDashboard } from "./pages/contributor/dashboard";
-import { ContributorManageData } from "./pages/contributor/manage-data";
-import { ContributorAccount } from "./pages/contributor/account";
-import { ContributorNotification } from "./pages/contributor/notification";
+import { BusinessAdvisoryLayout } from "./components/layouts/business-advisory";
+import { ContributorDashboard } from "./pages/business-advisory/dashboard";
+import { ContributorManageData } from "./pages/business-advisory/manage-data";
+import { ContributorAccount } from "./pages/business-advisory/account";
+import { ContributorNotification } from "./pages/business-advisory/notification";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,8 +23,8 @@ function App() {
       element: <SigninPage />,
     },
     {
-      path: "/contributor",
-      element: <ContributorLayout />,
+      path: "/business-advisory",
+      element: <BusinessAdvisoryLayout />,
       children: [
         { path: "dashboard", element: <ContributorDashboard /> },
         { path: "manage-data", element: <ContributorManageData /> },

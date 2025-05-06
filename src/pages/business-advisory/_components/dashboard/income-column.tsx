@@ -2,6 +2,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
+import { ViewEntry } from "../manage-data/view-entry";
+import { formatCurrency } from "@/lib/utils";
 
 export type Entries = {
   id: string;
@@ -10,6 +12,9 @@ export type Entries = {
   amount: number;
   enteredOn: string;
   lastEditedOn: string;
+  enteredDate: string;
+  lastEditedBy: string;
+  note?: string;
 };
 
 export const columns: ColumnDef<Entries>[] = [
@@ -61,7 +66,7 @@ export const columns: ColumnDef<Entries>[] = [
     header: "Amount",
     cell: ({ row }) => {
       const amount = row.getValue("amount") as number;
-      return <span>${amount.toFixed(2)}</span>;
+      return <span>{formatCurrency(amount)}</span>;
     },
   },
   {
@@ -76,17 +81,8 @@ export const columns: ColumnDef<Entries>[] = [
     id: "actions",
     header: "Actions",
     cell: ({ row }) => {
-      const actions = row.original;
-      return (
-        <Button
-          variant="outline"
-          size="sm"
-          className="text-xs"
-          onClick={() => console.log("Edit", actions.id)}
-        >
-          View
-        </Button>
-      );
+      const entry = row.original;
+      return <ViewEntry entry={entry} />;
     },
   },
 ];

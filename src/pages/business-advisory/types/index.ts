@@ -3,10 +3,10 @@ export type BaseEntry = {
   weekEnding: string;
   enteredBy: string;
   enteredDate: string;
-  lastModified: string;
-  modifiedBy: string;
-  note?: string;
   lastEditedOn: string;
+  lastEditedBy: string;
+  note?: string;
+  // lastEditedOn: string;
 };
 
 export type IncomeEntry = BaseEntry & {
@@ -15,10 +15,8 @@ export type IncomeEntry = BaseEntry & {
 
 export type ClientEntry = BaseEntry & {
   totalClients: number;
-  clientName: string;
 };
 
 export type ProspectEntry = BaseEntry & {
   totalProspects: number;
-  prospectName: string;
 };

@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 
+import { ViewEntry } from "./view-entry";
+import { formatCurrency } from "@/lib/utils";
+
 export const incomeColumns: ColumnDef<IncomeEntry>[] = [
   {
     id: "select",
@@ -27,8 +30,23 @@ export const incomeColumns: ColumnDef<IncomeEntry>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  { accessorKey: "id", header: "Entry ID" },
-  { accessorKey: "weekEnding", header: "Week Ending" },
+  {
+    accessorKey: "id",
+    header: "Entry ID",
+  },
+  {
+    accessorKey: "weekEnding",
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        className="text-xs"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Week Ending
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
+  },
   {
     accessorKey: "enteredBy",
     header: ({ column }) => (
@@ -67,23 +85,21 @@ export const incomeColumns: ColumnDef<IncomeEntry>[] = [
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     ),
+    cell: ({ row }) => {
+      const amount = row.getValue("amount") as number;
+      return <span>{formatCurrency(amount)}</span>;
+    },
   },
-  { accessorKey: "lastEditedOn", header: "Last Modified On" },
+  {
+    accessorKey: "lastEditedOn",
+    header: "Last Edited On",
+  },
   {
     id: "actions",
     header: "Actions",
     cell: ({ row }) => {
-      const actions = row.original;
-      return (
-        <Button
-          variant="outline"
-          size="sm"
-          className="text-xs"
-          onClick={() => console.log("Edit", actions.id)}
-        >
-          View
-        </Button>
-      );
+      const entry = row.original;
+      return <ViewEntry entry={entry} />;
     },
   },
 ];
@@ -140,35 +156,25 @@ export const clientColumns: ColumnDef<ClientEntry>[] = [
     ),
   },
   {
-    accessorKey: "clientName",
+    accessorKey: "totalClients",
     header: ({ column }) => (
       <Button
         variant="ghost"
         className="text-xs"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
       >
-        Client Name
+        Total Clients
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     ),
   },
-  { accessorKey: "totalClients", header: "Total Clients" },
-  { accessorKey: "lastEditedOn", header: "Last Modified On" },
+  { accessorKey: "lastEditedOn", header: "Last Edited On" },
   {
     id: "actions",
     header: "Actions",
     cell: ({ row }) => {
-      const actions = row.original;
-      return (
-        <Button
-          variant="outline"
-          size="sm"
-          className="text-xs"
-          onClick={() => console.log("Edit", actions.id)}
-        >
-          View
-        </Button>
-      );
+      const entry = row.original;
+      return <ViewEntry entry={entry} />;
     },
   },
 ];
@@ -224,24 +230,26 @@ export const prospectColumns: ColumnDef<ProspectEntry>[] = [
       </Button>
     ),
   },
-  { accessorKey: "prospectName", header: "Prospect Name" },
-  { accessorKey: "totalProspects", header: "Total Prospects" },
-  { accessorKey: "lastEditedOn", header: "Last Modified On" },
+  {
+    accessorKey: "totalProspects",
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        className="text-xs"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Total Prospects
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
+  },
+  { accessorKey: "lastEditedOn", header: "Last Edited On" },
   {
     id: "actions",
     header: "Actions",
     cell: ({ row }) => {
-      const actions = row.original;
-      return (
-        <Button
-          variant="outline"
-          size="sm"
-          className="text-xs"
-          onClick={() => console.log("Edit", actions.id)}
-        >
-          View
-        </Button>
-      );
+      const entry = row.original;
+      return <ViewEntry entry={entry} />;
     },
   },
 ];

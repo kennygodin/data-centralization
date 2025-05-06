@@ -22,7 +22,7 @@ import { Input } from "../ui/input";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
-export const ContributorSidebar = () => {
+export const BusinessAdvisorySidebar = () => {
   const { pathname } = useLocation();
 
   const isDashboardActive = pathname.includes("/dashboard");
@@ -56,7 +56,7 @@ export const ContributorSidebar = () => {
               )}
               asChild
             >
-              <Link to="/contributor/dashboard">
+              <Link to="/business-advisory/dashboard">
                 <LayoutDashboard />
                 <span>Dashboard</span>
               </Link>
@@ -71,7 +71,7 @@ export const ContributorSidebar = () => {
               )}
               asChild
             >
-              <Link to="/contributor/manage-data">
+              <Link to="/business-advisory/manage-data">
                 <Database />
                 <span>Manage Data</span>
               </Link>
@@ -87,7 +87,7 @@ export const ContributorSidebar = () => {
               )}
               asChild
             >
-              <Link to="/contributor/notification">
+              <Link to="/business-advisory/notification">
                 <Bell />
                 <span>Notification</span>
               </Link>
@@ -102,7 +102,7 @@ export const ContributorSidebar = () => {
               )}
               asChild
             >
-              <Link to="/contributor/account">
+              <Link to="/business-advisory/account">
                 <UserRound />
                 <span>Account</span>
               </Link>

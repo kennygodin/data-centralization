@@ -10,6 +10,14 @@ import {
 } from "@tanstack/react-table";
 
 import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+} from "@/components/ui/pagination";
+
+import {
   Table,
   TableBody,
   TableCell,
@@ -18,22 +26,29 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   searchValue?: string;
+  pageSize?: number;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   searchValue = "",
+  pageSize = 10,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [rowSelection, setRowSelection] = useState({});
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: pageSize,
+  });
 
   useEffect(() => {
     setGlobalFilter(searchValue);
@@ -49,12 +64,15 @@ export function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     onGlobalFilterChange: setGlobalFilter,
     onRowSelectionChange: setRowSelection,
+    onPaginationChange: setPagination,
     state: {
       sorting,
       columnFilters,
       globalFilter,
       rowSelection,
+      pagination,
     },
+    manualPagination: true,
   });
 
   return (
@@ -114,6 +132,51 @@ export function DataTable<TData, TValue>({
       <div className="flex-1 text-xs text-muted-foreground">
         {table.getFilteredSelectedRowModel().rows.length} of{" "}
         {table.getFilteredRowModel().rows.length} row(s) selected.
+      </div>
+
+      <div className="flex items-center justify-between">
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious>
+                <Button
+                  variant="ghost"
+                  onClick={() => table.previousPage()}
+                  disabled={!table.getCanPreviousPage()}
+                >
+                  Previous
+                </Button>
+              </PaginationPrevious>
+            </PaginationItem>
+
+            {Array.from({ length: table.getPageCount() }).map((_, index) => (
+              <PaginationItem key={index}>
+                <Button
+                  variant={
+                    table.getState().pagination.pageIndex === index
+                      ? "default"
+                      : "ghost"
+                  }
+                  onClick={() => table.setPageIndex(index)}
+                >
+                  {index + 1}
+                </Button>
+              </PaginationItem>
+            ))}
+
+            <PaginationItem>
+              <PaginationNext>
+                <Button
+                  variant="ghost"
+                  onClick={() => table.nextPage()}
+                  disabled={!table.getCanNextPage()}
+                >
+                  Next
+                </Button>
+              </PaginationNext>
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   );
