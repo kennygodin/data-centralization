@@ -1,3 +1,3 @@
-export const ContributorNotification = () => {
-  return <div>Contributor Notification</div>;
+export const BusinessAdvisoryNotification = () => {
+  return <div>BusinessAdvisory Notification</div>;
 };

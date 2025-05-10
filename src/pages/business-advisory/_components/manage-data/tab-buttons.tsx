@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { useSearchParams } from "react-router-dom";
 
 export type TabButton = {
   label: string;
@@ -15,10 +16,24 @@ const tabButtons: TabButton[] = [
 
 interface TabButtonsProps {
   onTabChange?: (value: string) => void;
+  activeTab?: string;
 }
 
-export const TabButtons = ({ onTabChange }: TabButtonsProps) => {
-  const [activeTab, setActiveTab] = useState(tabButtons[0].value);
+export const TabButtons = ({
+  onTabChange,
+  activeTab: propActiveTab,
+}: TabButtonsProps) => {
+  const [searchParams] = useSearchParams();
+  const urlTab = searchParams.get("tab");
+  const [activeTab, setActiveTab] = useState(
+    propActiveTab || urlTab || tabButtons[0].value
+  );
+
+  useEffect(() => {
+    if (urlTab && urlTab !== activeTab) {
+      setActiveTab(urlTab);
+    }
+  }, [urlTab, activeTab]);
 
   const handleTabClick = (value: string) => {
     setActiveTab(value);

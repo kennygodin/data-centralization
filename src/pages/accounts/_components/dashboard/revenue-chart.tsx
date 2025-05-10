@@ -13,21 +13,21 @@ import {
 } from "@/components/ui/chart";
 import { useState } from "react";
 import { formatCurrency } from "@/lib/utils";
-import { MonthSelector } from "./income-month-selector";
+import { MonthSelector } from "./revenue-month-selector";
 
 const fullYearData = [
-  { month: "January", income: 1230000 },
-  { month: "February", income: 2150000 },
-  { month: "March", income: 1780000 },
-  { month: "April", income: 520000 },
-  { month: "May", income: 1560000 },
-  { month: "June", income: 1890000 },
-  { month: "July", income: 2030000 },
-  { month: "August", income: 1420000 },
-  { month: "September", income: 1670000 },
-  { month: "October", income: 2340000 },
-  { month: "November", income: 1980000 },
-  { month: "December", income: 2560000 },
+  { month: "January", income: 950000 },
+  { month: "February", income: 1130000 },
+  { month: "March", income: 1725000 },
+  { month: "April", income: 1380000 },
+  { month: "May", income: 1640000 },
+  { month: "June", income: 1575000 },
+  { month: "July", income: 1490000 },
+  { month: "August", income: 1810000 },
+  { month: "September", income: 1935000 },
+  { month: "October", income: 2280000 },
+  { month: "November", income: 2170000 },
+  { month: "December", income: 2690000 },
 ];
 
 const chartConfig = {
@@ -37,7 +37,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export const IncomeChart = () => {
+export const RevenueChart = () => {
   const [selectedMonths, setSelectedMonths] = useState<string[]>(
     fullYearData.map((item) => item.month)
   );
@@ -53,7 +53,7 @@ export const IncomeChart = () => {
   return (
     <Card>
       <CardHeader className="flex items-center justify-between">
-        <h3 className="text-lg text-slate-950 font-medium">Income Chart</h3>
+        <h3 className="text-lg text-slate-950 font-medium">Revenue Chart</h3>
         <MonthSelector
           allMonths={fullYearData.map((item) => item.month)}
           selectedMonths={selectedMonths}

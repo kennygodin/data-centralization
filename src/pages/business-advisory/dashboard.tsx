@@ -12,7 +12,7 @@ import {
 import { Income } from "./_components/dashboard/income";
 import { IncomeChart } from "./_components/dashboard/income-chart";
 
-export const ContributorDashboard = () => {
+export const BusinessAdvisoryDashboard = () => {
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
     from: new Date(),
     to: new Date(),

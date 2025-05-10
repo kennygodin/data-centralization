@@ -38,6 +38,26 @@ export const Income = () => {
           lastEditedBy: "Prisca Lookman",
           lastEditedOn: "2025-04-21",
         },
+        {
+          id: "728ed5221f",
+          weekEnding: "2025-04-19",
+          enteredBy: "Alice Johnson",
+          amount: 300,
+          enteredOn: "2025-04-20",
+          enteredDate: "2025-05-12",
+          lastEditedBy: "Prisca Lookman",
+          lastEditedOn: "2025-04-21",
+        },
+        {
+          id: "728ed5221f",
+          weekEnding: "2025-04-19",
+          enteredBy: "Alice Johnson",
+          amount: 300,
+          enteredOn: "2025-04-20",
+          enteredDate: "2025-05-12",
+          lastEditedBy: "Prisca Lookman",
+          lastEditedOn: "2025-04-21",
+        },
       ];
       setData(res);
     }

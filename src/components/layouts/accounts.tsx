@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import { BusinessAdvisorySidebar } from "../sidebars/business-advisory";
+import { AccountsSidebar } from "../sidebars/accounts";
 import { SidebarProvider } from "../ui/sidebar";
 import { Navbar } from "../navbar";
 
-export const BusinessAdvisoryLayout = () => {
+export const AccountsLayout = () => {
   return (
     <SidebarProvider>
-      <BusinessAdvisorySidebar />
+      <AccountsSidebar />
       <main className="w-full">
         <Navbar />
         <Outlet />

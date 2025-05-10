@@ -1,9 +1,12 @@
 import {
   Bell,
+  ChartColumnIncreasing,
   Database,
   LayoutDashboard,
   LogOut,
+  NotebookPen,
   Search,
+  UserCog,
   UserRound,
 } from "lucide-react";
 import {
@@ -22,13 +25,16 @@ import { Input } from "../ui/input";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
-export const BusinessAdvisorySidebar = () => {
+export const AccountsSidebar = () => {
   const { pathname } = useLocation();
 
   const isDashboardActive = pathname.includes("/dashboard");
   const isManageDataActive = pathname.includes("/manage-data");
+  const isUserRolesActive = pathname.includes("/roles-permission");
+  const isReportsActive = pathname.includes("/reports");
+  const isAnalyticsActive = pathname.includes("/analytics");
   const isNotificationActive = pathname.includes("/notification");
-  const isAccountActive = pathname.includes("/account");
+  const isAccountActive = pathname === "/accounts/account";
   return (
     <Sidebar>
       <SidebarHeader className="items-center justify-center py-5">
@@ -38,7 +44,7 @@ export const BusinessAdvisorySidebar = () => {
             <AvatarImage src="https://yt3.googleusercontent.com/OmVF56SkN5MOOiMcpZyLGKrxQPH3xs9sN-xdlSR59bSFQsE_vdDT7Rc_i1t9HHj6WNlwS0hV1w=s176-c-k-c0x00ffffff-no-rj-mo" />
             <AvatarFallback>SM</AvatarFallback>
           </Avatar>
-          <p className="text-slate-950">Sangam Mukherjee</p>
+          <p className="text-slate-950">luigi Toad</p>
         </div>
       </SidebarHeader>
 
@@ -56,7 +62,7 @@ export const BusinessAdvisorySidebar = () => {
               )}
               asChild
             >
-              <Link to="/business-advisory/dashboard">
+              <Link to="/accounts/dashboard">
                 <LayoutDashboard />
                 <span>Dashboard</span>
               </Link>
@@ -71,9 +77,51 @@ export const BusinessAdvisorySidebar = () => {
               )}
               asChild
             >
-              <Link to="/business-advisory/manage-data">
+              <Link to="/accounts/manage-data">
                 <Database />
                 <span>Manage Data</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              className={cn(
+                "h-10 [&>svg]:w-5 [&>svg]:h-5",
+                isAnalyticsActive && "bg-[#DDE4E9] font-medium text-[#2349BA]"
+              )}
+              asChild
+            >
+              <Link to="/accounts/analytics">
+                <ChartColumnIncreasing />
+                <span>Analytics</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              className={cn(
+                "h-10 [&>svg]:w-5 [&>svg]:h-5",
+                isReportsActive && "bg-[#DDE4E9] font-medium text-[#2349BA]"
+              )}
+              asChild
+            >
+              <Link to="/accounts/reports">
+                <NotebookPen />
+                <span>Reports</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              className={cn(
+                "h-10 [&>svg]:w-5 [&>svg]:h-5",
+                isUserRolesActive && "bg-[#DDE4E9] font-medium text-[#2349BA]"
+              )}
+              asChild
+            >
+              <Link to="/accounts/roles-permission">
+                <UserCog />
+                <span>Users & Permissions</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -87,7 +135,7 @@ export const BusinessAdvisorySidebar = () => {
               )}
               asChild
             >
-              <Link to="/business-advisory/notification">
+              <Link to="/accounts/notification">
                 <Bell />
                 <span>Notification</span>
               </Link>
@@ -102,7 +150,7 @@ export const BusinessAdvisorySidebar = () => {
               )}
               asChild
             >
-              <Link to="/business-advisory/account">
+              <Link to="/accounts/account">
                 <UserRound />
                 <span>Account</span>
               </Link>

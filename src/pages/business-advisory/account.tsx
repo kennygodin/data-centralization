@@ -1,3 +1,3 @@
-export const ContributorAccount = () => {
-  return <div>Contributor Account</div>;
+export const BusinessAdvisoryAccount = () => {
+  return <div>BusinessAdvisory Account</div>;
 };
