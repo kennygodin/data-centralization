@@ -4,7 +4,7 @@ import { SortRecords } from "./_components/manage-data/sort-records";
 import { TabButtons } from "./_components/manage-data/tab-buttons";
 import { ManageRecordsTable } from "./_components/manage-data/manage-record-table";
 import { useEffect, useState } from "react";
-import { AddDataModal } from "./_components/manage-data/AddDataModal";
+import { AddDataModal } from "./_components/manage-data/add-data";
 import { useLocation, useSearchParams } from "react-router-dom";
 
 export const BusinessAdvisoryManageData = () => {
