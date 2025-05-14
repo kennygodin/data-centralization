@@ -11,7 +11,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Popover,
   PopoverTrigger,
@@ -37,7 +36,6 @@ export const AddSalaryModal = ({ icon, iconBg, label }: AddDataModalProps) => {
   const [invoice, setInvoice] = useState("");
   const [mode, setMode] = useState("Bank Transfer");
   const [status, setStatus] = useState("Paid");
-  const [notes, setNotes] = useState("");
 
   const handleSave = () => {
     // TODO: replace with real submit logic
@@ -51,7 +49,6 @@ export const AddSalaryModal = ({ icon, iconBg, label }: AddDataModalProps) => {
       invoice,
       mode,
       status,
-      notes,
     });
   };
 
@@ -232,17 +229,6 @@ export const AddSalaryModal = ({ icon, iconBg, label }: AddDataModalProps) => {
                 />
               </PopoverContent>
             </Popover>
-          </div>
-
-          <div className="col-span-2 space-y-2">
-            <Label htmlFor="notes">Notes</Label>
-            <Textarea
-              id="notes"
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Add any additional information"
-              className="min-h-[100px]"
-            />
           </div>
         </div>
 

@@ -11,7 +11,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Popover,
   PopoverTrigger,
@@ -40,7 +39,6 @@ export const AddReceivableModal = ({
   const [status, setStatus] = useState("Pending");
   const [mode, setMode] = useState("Bank Transfer");
   const [category, setCategory] = useState("Services");
-  const [notes, setNotes] = useState("");
 
   const handleSave = () => {
     console.log({
@@ -52,7 +50,6 @@ export const AddReceivableModal = ({
       status,
       mode,
       category,
-      notes,
     });
     // TODO: Add API integration here
   };
@@ -239,17 +236,6 @@ export const AddReceivableModal = ({
                 </option>
               ))}
             </select>
-          </div>
-
-          <div className="col-span-2 space-y-2">
-            <Label htmlFor="notes">Notes</Label>
-            <Textarea
-              id="notes"
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Add any additional information"
-              className="min-h-[100px]"
-            />
           </div>
         </div>
 

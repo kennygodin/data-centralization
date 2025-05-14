@@ -1,7 +1,11 @@
 import { endOfMonth, isWithinInterval, startOfMonth } from "date-fns";
-import { ClientEntry, IncomeEntry, ProspectEntry } from "../../types";
 import { clientColumns, incomeColumns, prospectColumns } from "./column";
 import { DataTable } from "./data-table";
+import {
+  ClientEntry,
+  IncomeEntry,
+  ProspectEntry,
+} from "@/types/business-advisory.types";
 
 interface ManageRecordsTableProps {
   activeTab: string;

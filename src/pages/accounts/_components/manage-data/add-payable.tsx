@@ -11,7 +11,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Popover,
   PopoverTrigger,
@@ -36,7 +35,6 @@ export const AddPayableModal = ({ icon, iconBg, label }: AddDataModalProps) => {
   const [status, setStatus] = useState("Pending");
   const [mode, setMode] = useState("Bank Transfer");
   const [category, setCategory] = useState("Utilities");
-  const [notes, setNotes] = useState("");
 
   const handleSave = () => {
     // TODO: integrate real submit logic
@@ -49,7 +47,6 @@ export const AddPayableModal = ({ icon, iconBg, label }: AddDataModalProps) => {
       status,
       mode,
       category,
-      notes,
     });
   };
 
@@ -227,17 +224,6 @@ export const AddPayableModal = ({ icon, iconBg, label }: AddDataModalProps) => {
                 </option>
               ))}
             </select>
-          </div>
-
-          <div className="col-span-2 space-y-2">
-            <Label htmlFor="notes">Notes</Label>
-            <Textarea
-              id="notes"
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Add any additional information"
-              className="min-h-[100px]"
-            />
           </div>
         </div>
 

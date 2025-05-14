@@ -7,9 +7,13 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { ClientEntry, IncomeEntry, ProspectEntry } from "../../types";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import {
+  ClientEntry,
+  IncomeEntry,
+  ProspectEntry,
+} from "@/types/business-advisory.types";
 
 interface IncomeEntrySheetProps {
   entry: IncomeEntry | ClientEntry | ProspectEntry;

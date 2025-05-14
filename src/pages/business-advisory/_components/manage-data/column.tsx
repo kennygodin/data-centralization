@@ -1,11 +1,15 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { ClientEntry, IncomeEntry, ProspectEntry } from "../../types";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 
 import { ViewEntry } from "./view-entry";
 import { formatCurrency } from "@/lib/utils";
+import {
+  ClientEntry,
+  IncomeEntry,
+  ProspectEntry,
+} from "@/types/business-advisory.types";
 
 export const incomeColumns: ColumnDef<IncomeEntry>[] = [
   {

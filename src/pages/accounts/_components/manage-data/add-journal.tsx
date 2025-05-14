@@ -127,6 +127,7 @@ export const AddJournalModal = ({ icon, iconBg, label }: AddDataModalProps) => {
               Description <span className="text-rose-500">*</span>
             </Label>
             <Input
+              className="h-10"
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -140,6 +141,7 @@ export const AddJournalModal = ({ icon, iconBg, label }: AddDataModalProps) => {
               Amount (₦) <span className="text-rose-500">*</span>
             </Label>
             <Input
+              className="h-10"
               id="amount"
               type="number"
               value={amount ?? ""}
@@ -154,6 +156,7 @@ export const AddJournalModal = ({ icon, iconBg, label }: AddDataModalProps) => {
               Account Name <span className="text-rose-500">*</span>
             </Label>
             <Input
+              className="h-10"
               id="accountName"
               value={accountName}
               onChange={(e) => setAccountName(e.target.value)}
@@ -165,6 +168,7 @@ export const AddJournalModal = ({ icon, iconBg, label }: AddDataModalProps) => {
           <div className="space-y-2">
             <Label htmlFor="referenceNumber">Reference Number</Label>
             <Input
+              className="h-10"
               id="referenceNumber"
               value={referenceNumber}
               onChange={(e) => setReferenceNumber(e.target.value)}
@@ -177,6 +181,7 @@ export const AddJournalModal = ({ icon, iconBg, label }: AddDataModalProps) => {
               Entered By <span className="text-rose-500">*</span>
             </Label>
             <Input
+              className="h-10"
               id="enteredBy"
               value={enteredBy}
               onChange={(e) => setEnteredBy(e.target.value)}
@@ -188,6 +193,7 @@ export const AddJournalModal = ({ icon, iconBg, label }: AddDataModalProps) => {
           <div className="col-span-2 space-y-2">
             <Label htmlFor="approvedBy">Approved By</Label>
             <Input
+              className="h-10"
               id="approvedBy"
               value={approvedBy}
               onChange={(e) => setApprovedBy(e.target.value)}
