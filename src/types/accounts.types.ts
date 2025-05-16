@@ -124,3 +124,14 @@ export type AllEntryTypes =
   | FinancialStatementEntry
   | InvoiceEntry
   | InternalPaymentEntry;
+
+export type UsersEntry = {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  department: string;
+  permissionGroup: string;
+  status: string;
+  lastLogin: string;
+};

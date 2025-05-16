@@ -8,7 +8,7 @@ export const AccountsLayout = () => {
     <SidebarProvider>
       <div className="flex min-h-screen w-full">
         <AccountsSidebar />
-        <div className="flex flex-col flex-1 overflow-hidden">
+        <div className="flex flex-col flex-1">
           <Navbar />
           <main className="flex-1 overflow-auto p-4">
             <div className="max-w-full overflow-x-hidden">

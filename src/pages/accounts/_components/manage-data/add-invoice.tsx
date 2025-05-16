@@ -19,6 +19,13 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarDays } from "lucide-react";
 import { format } from "date-fns";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface AddDataModalProps {
   icon: React.ReactNode;
@@ -148,20 +155,20 @@ export const AddInvoiceModal = ({ icon, iconBg, label }: AddDataModalProps) => {
             <Label htmlFor="paymentTerms">
               Payment Terms <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="paymentTerms"
-              value={paymentTerms}
-              onChange={(e) => setPaymentTerms(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {["Net 7", "Net 15", "Net 30", "Net 60", "Due on Receipt"].map(
-                (term) => (
-                  <option key={term} value={term}>
-                    {term}
-                  </option>
-                )
-              )}
-            </select>
+            <Select value={paymentTerms} onValueChange={setPaymentTerms}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select payment terms" />
+              </SelectTrigger>
+              <SelectContent>
+                {["Net 7", "Net 15", "Net 30", "Net 60", "Due on Receipt"].map(
+                  (term) => (
+                    <SelectItem key={term} value={term}>
+                      {term}
+                    </SelectItem>
+                  )
+                )}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
@@ -217,24 +224,24 @@ export const AddInvoiceModal = ({ icon, iconBg, label }: AddDataModalProps) => {
             <Label htmlFor="status">
               Status <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="status"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {[
-                "Pending",
-                "Paid",
-                "Overdue",
-                "Partially Paid",
-                "Cancelled",
-              ].map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
+            <Select value={status} onValueChange={setStatus}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select status" />
+              </SelectTrigger>
+              <SelectContent>
+                {[
+                  "Pending",
+                  "Paid",
+                  "Overdue",
+                  "Partially Paid",
+                  "Cancelled",
+                ].map((s) => (
+                  <SelectItem key={s} value={s}>
+                    {s}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
@@ -265,24 +272,24 @@ export const AddInvoiceModal = ({ icon, iconBg, label }: AddDataModalProps) => {
 
           <div className="space-y-2">
             <Label htmlFor="paymentMode">Mode of Payment</Label>
-            <select
-              id="paymentMode"
-              value={paymentMode}
-              onChange={(e) => setPaymentMode(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {[
-                "Bank Transfer",
-                "Cash",
-                "Cheque",
-                "Credit Card",
-                "Online Payment",
-              ].map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
+            <Select value={paymentMode} onValueChange={setPaymentMode}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select payment mode" />
+              </SelectTrigger>
+              <SelectContent>
+                {[
+                  "Bank Transfer",
+                  "Cash",
+                  "Cheque",
+                  "Credit Card",
+                  "Online Payment",
+                ].map((m) => (
+                  <SelectItem key={m} value={m}>
+                    {m}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="col-span-2 space-y-2">

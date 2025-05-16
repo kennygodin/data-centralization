@@ -8,6 +8,13 @@ import {
   DialogDescription,
   DialogClose,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -128,6 +135,7 @@ export const AddPettyCashModal = ({
               Amount (₦) <span className="text-rose-500">*</span>
             </Label>
             <Input
+              className="h-10"
               id="amount"
               type="number"
               value={amount ?? ""}
@@ -137,29 +145,30 @@ export const AddPettyCashModal = ({
             />
           </div>
 
+          {/* Category Select */}
           <div className="space-y-2">
             <Label htmlFor="category">
               Category <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {[
-                "Office Supplies",
-                "Transportation",
-                "Meals",
-                "Utilities",
-                "Maintenance",
-                "Other",
-              ].map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                {[
+                  "Office Supplies",
+                  "Transportation",
+                  "Meals",
+                  "Utilities",
+                  "Maintenance",
+                  "Other",
+                ].map((cat) => (
+                  <SelectItem key={cat} value={cat}>
+                    {cat}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">

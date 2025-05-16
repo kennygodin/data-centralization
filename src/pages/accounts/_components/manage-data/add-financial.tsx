@@ -8,6 +8,13 @@ import {
   DialogDescription,
   DialogClose,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -93,27 +100,28 @@ export const AddFinancialStatementModal = ({
         </DialogHeader>
 
         <div className="grid grid-cols-2 gap-4 py-4">
+          {/* Report Type Select */}
           <div className="col-span-2 space-y-2">
             <Label htmlFor="reportType">
               Report Type <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="reportType"
-              value={reportType}
-              onChange={(e) => setReportType(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {[
-                "Income Statement",
-                "Balance Sheet",
-                "Cash Flow Statement",
-                "Statement of Changes in Equity",
-              ].map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
+            <Select value={reportType} onValueChange={setReportType}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select report type" />
+              </SelectTrigger>
+              <SelectContent>
+                {[
+                  "Income Statement",
+                  "Balance Sheet",
+                  "Cash Flow Statement",
+                  "Statement of Changes in Equity",
+                ].map((type) => (
+                  <SelectItem key={type} value={type}>
+                    {type}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           <div className="space-y-2">
             <Label>

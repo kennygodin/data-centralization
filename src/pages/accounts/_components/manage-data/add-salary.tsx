@@ -8,6 +8,14 @@ import {
   DialogDescription,
   DialogClose,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -129,18 +137,18 @@ export const AddSalaryModal = ({ icon, iconBg, label }: AddDataModalProps) => {
             <Label htmlFor="department">
               Department <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="department"
-              value={department}
-              onChange={(e) => setDepartment(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {["Finance", "HR", "IT", "Sales"].map((dept) => (
-                <option key={dept} value={dept}>
-                  {dept}
-                </option>
-              ))}
-            </select>
+            <Select value={department} onValueChange={setDepartment}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select department" />
+              </SelectTrigger>
+              <SelectContent>
+                {["Finance", "HR", "IT", "Sales"].map((dept) => (
+                  <SelectItem key={dept} value={dept}>
+                    {dept}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
@@ -158,18 +166,18 @@ export const AddSalaryModal = ({ icon, iconBg, label }: AddDataModalProps) => {
             <Label htmlFor="mode">
               Mode of Payment <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="mode"
-              value={mode}
-              onChange={(e) => setMode(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {["Bank Transfer", "Cash", "Cheque"].map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
+            <Select value={mode} onValueChange={setMode}>
+              <SelectTrigger className="h-10 w-full">
+                <SelectValue placeholder="Select payment mode" />
+              </SelectTrigger>
+              <SelectContent>
+                {["Bank Transfer", "Cash", "Cheque"].map((m) => (
+                  <SelectItem key={m} value={m}>
+                    {m}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
@@ -191,18 +199,18 @@ export const AddSalaryModal = ({ icon, iconBg, label }: AddDataModalProps) => {
             <Label htmlFor="status">
               Payment Status <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="status"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {["Paid", "Pending", "Overdue"].map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
+            <Select value={status} onValueChange={setStatus}>
+              <SelectTrigger className="h-10 w-full">
+                <SelectValue placeholder="Select status" />
+              </SelectTrigger>
+              <SelectContent>
+                {["Paid", "Pending", "Overdue"].map((s) => (
+                  <SelectItem key={s} value={s}>
+                    {s}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="col-span-2 space-y-2">

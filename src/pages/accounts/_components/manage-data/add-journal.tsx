@@ -8,6 +8,13 @@ import {
   DialogDescription,
   DialogClose,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -86,18 +93,18 @@ export const AddJournalModal = ({ icon, iconBg, label }: AddDataModalProps) => {
             <Label htmlFor="entryType">
               Entry Type <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="entryType"
-              value={entryType}
-              onChange={(e) => setEntryType(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {["Debit", "Credit", "Adjustment", "Reversal"].map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
+            <Select value={entryType} onValueChange={setEntryType}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select entry type" />
+              </SelectTrigger>
+              <SelectContent>
+                {["Debit", "Credit", "Adjustment", "Reversal"].map((type) => (
+                  <SelectItem key={type} value={type}>
+                    {type}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">

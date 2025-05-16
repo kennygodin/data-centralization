@@ -121,7 +121,7 @@ export const BusinessAdvisorySidebar = () => {
             >
               <Link to="/business-advisory/roles-permission">
                 <UserCog />
-                <span>Users & Permissions</span>
+                <span>Users Permission</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

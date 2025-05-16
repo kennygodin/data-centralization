@@ -19,6 +19,13 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarDays } from "lucide-react";
 import { format } from "date-fns";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface AddDataModalProps {
   icon: React.ReactNode;
@@ -129,24 +136,24 @@ export const AddInternalPaymentModal = ({
             <Label htmlFor="paymentType">
               Payment Type <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="paymentType"
-              value={paymentType}
-              onChange={(e) => setPaymentType(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {[
-                "Reimbursement",
-                "Advance",
-                "Salary Advance",
-                "Petty Cash",
-                "Other",
-              ].map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
+            <Select value={paymentType} onValueChange={setPaymentType}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select payment type" />
+              </SelectTrigger>
+              <SelectContent>
+                {[
+                  "Reimbursement",
+                  "Advance",
+                  "Salary Advance",
+                  "Petty Cash",
+                  "Other",
+                ].map((type) => (
+                  <SelectItem key={type} value={type}>
+                    {type}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
@@ -168,38 +175,40 @@ export const AddInternalPaymentModal = ({
             <Label htmlFor="paymentMode">
               Mode of Payment <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="paymentMode"
-              value={paymentMode}
-              onChange={(e) => setPaymentMode(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {["Bank Transfer", "Cash", "Cheque", "Mobile Money"].map(
-                (mode) => (
-                  <option key={mode} value={mode}>
-                    {mode}
-                  </option>
-                )
-              )}
-            </select>
+            <Select value={paymentMode} onValueChange={setPaymentMode}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select payment mode" />
+              </SelectTrigger>
+              <SelectContent>
+                {["Bank Transfer", "Cash", "Cheque", "Mobile Money"].map(
+                  (mode) => (
+                    <SelectItem key={mode} value={mode}>
+                      {mode}
+                    </SelectItem>
+                  )
+                )}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="approvalStatus">
               Approval Status <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="approvalStatus"
-              value={approvalStatus}
-              onChange={(e) => setApprovalStatus(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {["Pending", "Approved", "Rejected", "On Hold"].map((status) => (
-                <option key={status} value={status}>
-                  {status}
-                </option>
-              ))}
-            </select>
+            <Select value={approvalStatus} onValueChange={setApprovalStatus}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select approval status" />
+              </SelectTrigger>
+              <SelectContent>
+                {["Pending", "Approved", "Rejected", "On Hold"].map(
+                  (status) => (
+                    <SelectItem key={status} value={status}>
+                      {status}
+                    </SelectItem>
+                  )
+                )}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="col-span-2 space-y-2">

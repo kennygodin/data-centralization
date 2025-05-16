@@ -8,13 +8,13 @@ import { BusinessAdvisoryAccount } from "./pages/business-advisory/account";
 import { BusinessAdvisoryNotification } from "./pages/business-advisory/notification";
 import { BusinessAdvisoryAnalytics } from "./pages/business-advisory/analytics";
 import { BusinessAdvisoryReports } from "./pages/business-advisory/reports";
-import { BusinessAdvisoryRolesPermission } from "./pages/business-advisory/roles-permission";
+import { BusinessAdvisoryUsersPermission } from "./pages/business-advisory/users-permission";
 import { AccountsLayout } from "./components/layouts/accounts";
 import { AccountsDashboard } from "./pages/accounts/dashboard";
 import { AccountsAccount } from "./pages/accounts/account";
 import { AccountsAnalytics } from "./pages/accounts/analytics";
 import { AccountsReports } from "./pages/accounts/reports";
-import { AccountsRolesPermission } from "./pages/accounts/roles-permission";
+import { AccountsUsersPermission } from "./pages/accounts/users-permission";
 import { AccountsNotification } from "./pages/accounts/notification";
 import { AccountsManageData } from "./pages/accounts/manage-data";
 
@@ -44,8 +44,8 @@ function App() {
         { path: "analytics", element: <AccountsAnalytics /> },
         { path: "reports", element: <AccountsReports /> },
         {
-          path: "roles-permission",
-          element: <AccountsRolesPermission />,
+          path: "users-permission",
+          element: <AccountsUsersPermission />,
         },
       ],
     },
@@ -61,7 +61,7 @@ function App() {
         { path: "reports", element: <BusinessAdvisoryReports /> },
         {
           path: "roles-permission",
-          element: <BusinessAdvisoryRolesPermission />,
+          element: <BusinessAdvisoryUsersPermission />,
         },
       ],
     },

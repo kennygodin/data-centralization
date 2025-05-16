@@ -19,6 +19,13 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarDays } from "lucide-react";
 import { format } from "date-fns";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface AddDataModalProps {
   icon: React.ReactNode;
@@ -132,38 +139,38 @@ export const AddReceivableModal = ({
             <Label htmlFor="category">
               Category <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {["Services", "Products", "Subscriptions", "Rent", "Other"].map(
-                (cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                )
-              )}
-            </select>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                {["Services", "Products", "Subscriptions", "Rent", "Other"].map(
+                  (cat) => (
+                    <SelectItem key={cat} value={cat}>
+                      {cat}
+                    </SelectItem>
+                  )
+                )}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="status">
               Payment Status <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="status"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {["Pending", "Paid", "Overdue", "Partially Paid"].map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
+            <Select value={status} onValueChange={setStatus}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select status" />
+              </SelectTrigger>
+              <SelectContent>
+                {["Pending", "Paid", "Overdue", "Partially Paid"].map((s) => (
+                  <SelectItem key={s} value={s}>
+                    {s}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
@@ -218,24 +225,24 @@ export const AddReceivableModal = ({
             <Label htmlFor="mode">
               Mode of Payment <span className="text-rose-500">*</span>
             </Label>
-            <select
-              id="mode"
-              value={mode}
-              onChange={(e) => setMode(e.target.value)}
-              className="w-full h-10 rounded-md border px-3 text-sm"
-            >
-              {[
-                "Bank Transfer",
-                "Cash",
-                "Cheque",
-                "Credit Card",
-                "Online Payment",
-              ].map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
+            <Select value={mode} onValueChange={setMode}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select payment mode" />
+              </SelectTrigger>
+              <SelectContent>
+                {[
+                  "Bank Transfer",
+                  "Cash",
+                  "Cheque",
+                  "Credit Card",
+                  "Online Payment",
+                ].map((m) => (
+                  <SelectItem key={m} value={m}>
+                    {m}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
 

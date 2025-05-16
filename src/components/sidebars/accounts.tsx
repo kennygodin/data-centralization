@@ -30,13 +30,13 @@ export const AccountsSidebar = () => {
 
   const isDashboardActive = pathname.includes("/dashboard");
   const isManageDataActive = pathname.includes("/manage-data");
-  const isUserRolesActive = pathname.includes("/roles-permission");
+  const isUserPermissionActive = pathname.includes("/users-permission");
   const isReportsActive = pathname.includes("/reports");
   const isAnalyticsActive = pathname.includes("/analytics");
   const isNotificationActive = pathname.includes("/notification");
   const isAccountActive = pathname === "/accounts/account";
   return (
-    <Sidebar>
+    <Sidebar className="z-20">
       <SidebarHeader className="items-center justify-center py-5">
         <Badge className="text-amber-900 bg-amber-100">Contributor</Badge>
         <div className="flex items-center gap-2">
@@ -115,13 +115,14 @@ export const AccountsSidebar = () => {
             <SidebarMenuButton
               className={cn(
                 "h-10 [&>svg]:w-5 [&>svg]:h-5",
-                isUserRolesActive && "bg-[#DDE4E9] font-medium text-[#2349BA]"
+                isUserPermissionActive &&
+                  "bg-[#DDE4E9] font-medium text-[#2349BA]"
               )}
               asChild
             >
-              <Link to="/accounts/roles-permission">
+              <Link to="/accounts/users-permission">
                 <UserCog />
-                <span>Users & Permissions</span>
+                <span>Users Permission</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
