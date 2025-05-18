@@ -33,7 +33,7 @@ export const SigninForm = () => {
       </CardContent>
       <CardFooter>
         <Button
-          onClick={() => navigate("/business-advisory/dashboard")}
+          onClick={() => navigate("/accounts/dashboard")}
           className="w-full h-12 cursor-pointer bg-emerald-600 hover:bg-emerald-700"
         >
           Sign in

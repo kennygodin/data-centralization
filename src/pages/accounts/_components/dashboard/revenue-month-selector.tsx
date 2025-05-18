@@ -5,19 +5,17 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ChevronDown, Check } from "lucide-react";
-
-interface MonthSelectorProps {
-  allMonths: string[];
-  selectedMonths: string[];
-  onSelect: (months: string[]) => void;
-}
+import { Check, CalendarIcon } from "lucide-react";
 
 export const MonthSelector = ({
   allMonths,
   selectedMonths,
   onSelect,
-}: MonthSelectorProps) => {
+}: {
+  allMonths: string[];
+  selectedMonths: string[];
+  onSelect: (months: string[]) => void;
+}) => {
   const [open, setOpen] = useState(false);
 
   const toggleMonth = (month: string) => {
@@ -40,12 +38,14 @@ export const MonthSelector = ({
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button variant="outline" className="h-10 text-slate-950 space-x-2">
+          <CalendarIcon className="h-4 w-4" />
           <span>
             {selectedMonths.length === allMonths.length
-              ? "All months"
-              : `${selectedMonths.length} selected`}
+              ? "Months"
+              : selectedMonths.length === 1
+                ? selectedMonths[0].slice(0, 3)
+                : `${selectedMonths.length} selected`}
           </span>
-          <ChevronDown className="w-4 h-4" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-64 p-2">
